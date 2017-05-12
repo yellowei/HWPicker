@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		177374650A722E9155F655A8 /* Pods_HWPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6C5618D3E8B82943B2D41C /* Pods_HWPicker.framework */; };
+		BC277C0A1EC313E2007023E1 /* PHSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC277C091EC313E2007023E1 /* PHSourceManager.swift */; };
+		BC277C0C1EC3193F007023E1 /* MomentCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC277C0B1EC3193F007023E1 /* MomentCollection.swift */; };
+		BC3DEB9C1EC2B0510047F62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEB9B1EC2B0510047F62C /* AppDelegate.swift */; };
+		BC3DEB9E1EC2B0510047F62C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEB9D1EC2B0510047F62C /* ViewController.swift */; };
+		BC3DEBA11EC2B0510047F62C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC3DEB9F1EC2B0510047F62C /* Main.storyboard */; };
+		BC3DEBA31EC2B0510047F62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC3DEBA21EC2B0510047F62C /* Assets.xcassets */; };
+		BC3DEBA61EC2B0510047F62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC3DEBA41EC2B0510047F62C /* LaunchScreen.storyboard */; };
+		BC3DEBAF1EC2B1E80047F62C /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3DEBAD1EC2B1E80047F62C /* MBProgressHUD.framework */; };
+		BC3DEBB01EC2B1E80047F62C /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3DEBAE1EC2B1E80047F62C /* SDWebImage.framework */; };
+		BC3DEBB31EC2B3D50047F62C /* HWPhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB21EC2B3D50047F62C /* HWPhotoPickerController.swift */; };
+		BC3DEBB51EC2B8990047F62C /* HWMultiPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB41EC2B8990047F62C /* HWMultiPickerController.swift */; };
+		BC3DEBB81EC2B95E0047F62C /* AlbumObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB71EC2B95E0047F62C /* AlbumObj.swift */; };
+		BC3DEBBD1EC2E79D0047F62C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBBC1EC2E79D0047F62C /* UIColor+Extension.swift */; };
+		BC3DEBC01EC2EA3C0047F62C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBBF1EC2EA3C0047F62C /* Common.swift */; };
+		BC3DEBC31EC2F3040047F62C /* ImageDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBC21EC2F3030047F62C /* ImageDataAPI.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0DBAAF6B5F5D0D24364FF595 /* Pods-HWPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HWPicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HWPicker/Pods-HWPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		1E6C5618D3E8B82943B2D41C /* Pods_HWPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HWPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8CDF1FFBFCADBA466C37E9A /* Pods-HWPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HWPicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-HWPicker/Pods-HWPicker.release.xcconfig"; sourceTree = "<group>"; };
+		BC277C091EC313E2007023E1 /* PHSourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHSourceManager.swift; sourceTree = "<group>"; };
+		BC277C0B1EC3193F007023E1 /* MomentCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentCollection.swift; sourceTree = "<group>"; };
+		BC3DEB981EC2B0510047F62C /* HWPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HWPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC3DEB9B1EC2B0510047F62C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BC3DEB9D1EC2B0510047F62C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BC3DEBA01EC2B0510047F62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BC3DEBA21EC2B0510047F62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC3DEBA51EC2B0510047F62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC3DEBA71EC2B0510047F62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC3DEBAD1EC2B1E80047F62C /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		BC3DEBAE1EC2B1E80047F62C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "Pods/../build/Debug-iphoneos/SDWebImage/SDWebImage.framework"; sourceTree = "<group>"; };
+		BC3DEBB21EC2B3D50047F62C /* HWPhotoPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HWPhotoPickerController.swift; sourceTree = "<group>"; };
+		BC3DEBB41EC2B8990047F62C /* HWMultiPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HWMultiPickerController.swift; sourceTree = "<group>"; };
+		BC3DEBB71EC2B95E0047F62C /* AlbumObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumObj.swift; sourceTree = "<group>"; };
+		BC3DEBBC1EC2E79D0047F62C /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		BC3DEBBF1EC2EA3C0047F62C /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		BC3DEBC21EC2F3030047F62C /* ImageDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataAPI.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC3DEB951EC2B0510047F62C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC3DEBAF1EC2B1E80047F62C /* MBProgressHUD.framework in Frameworks */,
+				BC3DEBB01EC2B1E80047F62C /* SDWebImage.framework in Frameworks */,
+				177374650A722E9155F655A8 /* Pods_HWPicker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3213627CA96EFE80D83C58DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC3DEBAD1EC2B1E80047F62C /* MBProgressHUD.framework */,
+				BC3DEBAE1EC2B1E80047F62C /* SDWebImage.framework */,
+				1E6C5618D3E8B82943B2D41C /* Pods_HWPicker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC3DEB8F1EC2B0510047F62C = {
+			isa = PBXGroup;
+			children = (
+				BC3DEBB11EC2B3640047F62C /* HWPhotoPicker-Swift */,
+				BC3DEB9A1EC2B0510047F62C /* HWPicker */,
+				BC3DEB991EC2B0510047F62C /* Products */,
+				C7673289B104E566256B854E /* Pods */,
+				3213627CA96EFE80D83C58DD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BC3DEB991EC2B0510047F62C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC3DEB981EC2B0510047F62C /* HWPicker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3DEB9A1EC2B0510047F62C /* HWPicker */ = {
+			isa = PBXGroup;
+			children = (
+				BC3DEB9B1EC2B0510047F62C /* AppDelegate.swift */,
+				BC3DEB9D1EC2B0510047F62C /* ViewController.swift */,
+				BC3DEB9F1EC2B0510047F62C /* Main.storyboard */,
+				BC3DEBA21EC2B0510047F62C /* Assets.xcassets */,
+				BC3DEBA41EC2B0510047F62C /* LaunchScreen.storyboard */,
+				BC3DEBA71EC2B0510047F62C /* Info.plist */,
+			);
+			path = HWPicker;
+			sourceTree = "<group>";
+		};
+		BC3DEBB11EC2B3640047F62C /* HWPhotoPicker-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				BC3DEBC11EC2F2EC0047F62C /* DataManager */,
+				BC3DEBBE1EC2EA340047F62C /* Common */,
+				BC3DEBB91EC2E7780047F62C /* Category */,
+				BC3DEBB61EC2B9380047F62C /* DataModel */,
+				BC3DEBB21EC2B3D50047F62C /* HWPhotoPickerController.swift */,
+				BC3DEBB41EC2B8990047F62C /* HWMultiPickerController.swift */,
+			);
+			path = "HWPhotoPicker-Swift";
+			sourceTree = "<group>";
+		};
+		BC3DEBB61EC2B9380047F62C /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				BC3DEBB71EC2B95E0047F62C /* AlbumObj.swift */,
+				BC277C0B1EC3193F007023E1 /* MomentCollection.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		BC3DEBB91EC2E7780047F62C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				BC3DEBBC1EC2E79D0047F62C /* UIColor+Extension.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		BC3DEBBE1EC2EA340047F62C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BC3DEBBF1EC2EA3C0047F62C /* Common.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BC3DEBC11EC2F2EC0047F62C /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				BC3DEBC21EC2F3030047F62C /* ImageDataAPI.swift */,
+				BC277C091EC313E2007023E1 /* PHSourceManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		C7673289B104E566256B854E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0DBAAF6B5F5D0D24364FF595 /* Pods-HWPicker.debug.xcconfig */,
+				A8CDF1FFBFCADBA466C37E9A /* Pods-HWPicker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC3DEB971EC2B0510047F62C /* HWPicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC3DEBAA1EC2B0510047F62C /* Build configuration list for PBXNativeTarget "HWPicker" */;
+			buildPhases = (
+				EE6675E8E01505C5010C7FF9 /* [CP] Check Pods Manifest.lock */,
+				BC3DEB941EC2B0510047F62C /* Sources */,
+				BC3DEB951EC2B0510047F62C /* Frameworks */,
+				BC3DEB961EC2B0510047F62C /* Resources */,
+				D338B5483F67A3E87AD32706 /* [CP] Embed Pods Frameworks */,
+				77252C9FB3E61758F0D261DC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HWPicker;
+			productName = HWPicker;
+			productReference = BC3DEB981EC2B0510047F62C /* HWPicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC3DEB901EC2B0510047F62C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = yellowei;
+				TargetAttributes = {
+					BC3DEB971EC2B0510047F62C = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = F9N4PL48HY;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BC3DEB931EC2B0510047F62C /* Build configuration list for PBXProject "HWPicker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC3DEB8F1EC2B0510047F62C;
+			productRefGroup = BC3DEB991EC2B0510047F62C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC3DEB971EC2B0510047F62C /* HWPicker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC3DEB961EC2B0510047F62C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC3DEBA61EC2B0510047F62C /* LaunchScreen.storyboard in Resources */,
+				BC3DEBA31EC2B0510047F62C /* Assets.xcassets in Resources */,
+				BC3DEBA11EC2B0510047F62C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		77252C9FB3E61758F0D261DC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HWPicker/Pods-HWPicker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D338B5483F67A3E87AD32706 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HWPicker/Pods-HWPicker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE6675E8E01505C5010C7FF9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC3DEB941EC2B0510047F62C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC3DEBB81EC2B95E0047F62C /* AlbumObj.swift in Sources */,
+				BC277C0A1EC313E2007023E1 /* PHSourceManager.swift in Sources */,
+				BC3DEBB51EC2B8990047F62C /* HWMultiPickerController.swift in Sources */,
+				BC3DEB9E1EC2B0510047F62C /* ViewController.swift in Sources */,
+				BC3DEBBD1EC2E79D0047F62C /* UIColor+Extension.swift in Sources */,
+				BC3DEBC31EC2F3040047F62C /* ImageDataAPI.swift in Sources */,
+				BC3DEB9C1EC2B0510047F62C /* AppDelegate.swift in Sources */,
+				BC3DEBB31EC2B3D50047F62C /* HWPhotoPickerController.swift in Sources */,
+				BC3DEBC01EC2EA3C0047F62C /* Common.swift in Sources */,
+				BC277C0C1EC3193F007023E1 /* MomentCollection.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BC3DEB9F1EC2B0510047F62C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC3DEBA01EC2B0510047F62C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BC3DEBA41EC2B0510047F62C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC3DEBA51EC2B0510047F62C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC3DEBA81EC2B0510047F62C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BC3DEBA91EC2B0510047F62C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC3DEBAB1EC2B0510047F62C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DBAAF6B5F5D0D24364FF595 /* Pods-HWPicker.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F9N4PL48HY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/MBProgressHUD",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SDWebImage",
+				);
+				INFOPLIST_FILE = HWPicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yellowei.www.-.HWPicker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BC3DEBAC1EC2B0510047F62C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8CDF1FFBFCADBA466C37E9A /* Pods-HWPicker.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F9N4PL48HY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/MBProgressHUD",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SDWebImage",
+				);
+				INFOPLIST_FILE = HWPicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yellowei.www.-.HWPicker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC3DEB931EC2B0510047F62C /* Build configuration list for PBXProject "HWPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC3DEBA81EC2B0510047F62C /* Debug */,
+				BC3DEBA91EC2B0510047F62C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC3DEBAA1EC2B0510047F62C /* Build configuration list for PBXNativeTarget "HWPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC3DEBAB1EC2B0510047F62C /* Debug */,
+				BC3DEBAC1EC2B0510047F62C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC3DEB901EC2B0510047F62C /* Project object */;
+}
