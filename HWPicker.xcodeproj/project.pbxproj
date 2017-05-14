@@ -17,12 +17,14 @@
 		BC3DEBA61EC2B0510047F62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC3DEBA41EC2B0510047F62C /* LaunchScreen.storyboard */; };
 		BC3DEBAF1EC2B1E80047F62C /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3DEBAD1EC2B1E80047F62C /* MBProgressHUD.framework */; };
 		BC3DEBB01EC2B1E80047F62C /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3DEBAE1EC2B1E80047F62C /* SDWebImage.framework */; };
-		BC3DEBB31EC2B3D50047F62C /* HWPhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB21EC2B3D50047F62C /* HWPhotoPickerController.swift */; };
-		BC3DEBB51EC2B8990047F62C /* HWMultiPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB41EC2B8990047F62C /* HWMultiPickerController.swift */; };
+		BC3DEBB31EC2B3D50047F62C /* PhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB21EC2B3D50047F62C /* PhotoPickerController.swift */; };
+		BC3DEBB51EC2B8990047F62C /* MultiPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB41EC2B8990047F62C /* MultiPickerController.swift */; };
 		BC3DEBB81EC2B95E0047F62C /* AlbumObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB71EC2B95E0047F62C /* AlbumObj.swift */; };
 		BC3DEBBD1EC2E79D0047F62C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBBC1EC2E79D0047F62C /* UIColor+Extension.swift */; };
 		BC3DEBC01EC2EA3C0047F62C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBBF1EC2EA3C0047F62C /* Common.swift */; };
 		BC3DEBC31EC2F3040047F62C /* ImageDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBC21EC2F3030047F62C /* ImageDataAPI.swift */; };
+		BCA6F1DF1EC5B4FE00F649D7 /* PhotoObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA6F1DE1EC5B4FD00F649D7 /* PhotoObj.swift */; };
+		BCA6F1E21EC5E58C00F649D7 /* PhotoPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA6F1E11EC5E58C00F649D7 /* PhotoPickerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +42,14 @@
 		BC3DEBA71EC2B0510047F62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC3DEBAD1EC2B1E80047F62C /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
 		BC3DEBAE1EC2B1E80047F62C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "Pods/../build/Debug-iphoneos/SDWebImage/SDWebImage.framework"; sourceTree = "<group>"; };
-		BC3DEBB21EC2B3D50047F62C /* HWPhotoPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HWPhotoPickerController.swift; sourceTree = "<group>"; };
-		BC3DEBB41EC2B8990047F62C /* HWMultiPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HWMultiPickerController.swift; sourceTree = "<group>"; };
+		BC3DEBB21EC2B3D50047F62C /* PhotoPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerController.swift; sourceTree = "<group>"; };
+		BC3DEBB41EC2B8990047F62C /* MultiPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPickerController.swift; sourceTree = "<group>"; };
 		BC3DEBB71EC2B95E0047F62C /* AlbumObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumObj.swift; sourceTree = "<group>"; };
 		BC3DEBBC1EC2E79D0047F62C /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		BC3DEBBF1EC2EA3C0047F62C /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		BC3DEBC21EC2F3030047F62C /* ImageDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataAPI.swift; sourceTree = "<group>"; };
+		BCA6F1DE1EC5B4FD00F649D7 /* PhotoObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoObj.swift; sourceTree = "<group>"; };
+		BCA6F1E11EC5E58C00F649D7 /* PhotoPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,12 +111,13 @@
 		BC3DEBB11EC2B3640047F62C /* HWPhotoPicker-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				BCA6F1E01EC5E57600F649D7 /* Views */,
 				BC3DEBC11EC2F2EC0047F62C /* DataManager */,
 				BC3DEBBE1EC2EA340047F62C /* Common */,
 				BC3DEBB91EC2E7780047F62C /* Category */,
 				BC3DEBB61EC2B9380047F62C /* DataModel */,
-				BC3DEBB21EC2B3D50047F62C /* HWPhotoPickerController.swift */,
-				BC3DEBB41EC2B8990047F62C /* HWMultiPickerController.swift */,
+				BC3DEBB21EC2B3D50047F62C /* PhotoPickerController.swift */,
+				BC3DEBB41EC2B8990047F62C /* MultiPickerController.swift */,
 			);
 			path = "HWPhotoPicker-Swift";
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 			children = (
 				BC3DEBB71EC2B95E0047F62C /* AlbumObj.swift */,
 				BC277C0B1EC3193F007023E1 /* MomentCollection.swift */,
+				BCA6F1DE1EC5B4FD00F649D7 /* PhotoObj.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -149,6 +155,14 @@
 				BC277C091EC313E2007023E1 /* PHSourceManager.swift */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		BCA6F1E01EC5E57600F649D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BCA6F1E11EC5E58C00F649D7 /* PhotoPickerCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C7673289B104E566256B854E /* Pods */ = {
@@ -286,12 +300,14 @@
 			files = (
 				BC3DEBB81EC2B95E0047F62C /* AlbumObj.swift in Sources */,
 				BC277C0A1EC313E2007023E1 /* PHSourceManager.swift in Sources */,
-				BC3DEBB51EC2B8990047F62C /* HWMultiPickerController.swift in Sources */,
+				BC3DEBB51EC2B8990047F62C /* MultiPickerController.swift in Sources */,
+				BCA6F1DF1EC5B4FE00F649D7 /* PhotoObj.swift in Sources */,
+				BCA6F1E21EC5E58C00F649D7 /* PhotoPickerCell.swift in Sources */,
 				BC3DEB9E1EC2B0510047F62C /* ViewController.swift in Sources */,
 				BC3DEBBD1EC2E79D0047F62C /* UIColor+Extension.swift in Sources */,
 				BC3DEBC31EC2F3040047F62C /* ImageDataAPI.swift in Sources */,
 				BC3DEB9C1EC2B0510047F62C /* AppDelegate.swift in Sources */,
-				BC3DEBB31EC2B3D50047F62C /* HWPhotoPickerController.swift in Sources */,
+				BC3DEBB31EC2B3D50047F62C /* PhotoPickerController.swift in Sources */,
 				BC3DEBC01EC2EA3C0047F62C /* Common.swift in Sources */,
 				BC277C0C1EC3193F007023E1 /* MomentCollection.swift in Sources */,
 			);
@@ -425,7 +441,7 @@
 				);
 				INFOPLIST_FILE = HWPicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yellowei.www.-.HWPicker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yellowei.www.-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -444,7 +460,7 @@
 				);
 				INFOPLIST_FILE = HWPicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yellowei.www.-.HWPicker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yellowei.www.-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

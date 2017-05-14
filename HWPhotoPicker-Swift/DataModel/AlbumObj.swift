@@ -15,19 +15,12 @@ class AlbumObj: NSObject {
     var name: String?
     var posterImage: UIImage?
     var count: Int = 0
-    var type: UInt = 0
+    var type: Int = 0
     
     private var fetRes: PHFetchResult<AnyObject>?
     
    
     
-    var collection: Any?{
-        get{
-            return IS_IOS8 ? fetRes : nil
-        }
-        set{
-            self.collection = newValue
-        }
-    }
+    var collection: PHFetchResult<AnyObject>?
 
 }

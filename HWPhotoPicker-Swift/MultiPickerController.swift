@@ -1,5 +1,5 @@
 //
-//  HWMultiPickerController.swift
+//  MultiPickerController.swift
 //  HWPicker
 //
 //  Created by yellowei on 2017/5/10.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol HWMultiPickerViewControllerDelegate: NSObjectProtocol {
-    func didFinishPickingWithImages(picker: HWMultiPickerController, images: [Any]) -> ()
+protocol MultiPickerViewControllerDelegate: NSObjectProtocol {
+    func didFinishPickingWithImages(picker: MultiPickerController, images: [Any]) -> ()
 }
 
-class HWMultiPickerController: UIViewController {
+class MultiPickerController: UIViewController {
     
     ///Delegate
-    var delegate: HWMultiPickerViewControllerDelegate?
+    var delegate: MultiPickerViewControllerDelegate?
     
     ///相册数据相关模型
     var assetsGroup: AlbumObj?

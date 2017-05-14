@@ -66,10 +66,80 @@ class ImageDataAPI: NSObject {
     }
     
     
+    /// <#Description#>
+    ///
+    /// - Parameter completion: completion description
     func getAlbumsWith(completion: ((_ ret: Bool?, _ obj: Any?)->())) -> () {
         
         if IS_IOS8{
-            self.phManager.get
+            self.phManager?.getAlbumsWith(completion: { (ret, obj) in
+                completion(ret, obj)
+            })
         }
     }
+    
+    
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - album: <#album description#>
+    ///   - completion: <#completion description#>
+    func getPosterImageForAlbumObj(album: AlbumObj, completion: @escaping ((_ ret: Bool?, _ obj: Any?)->())) -> () {
+        
+        if IS_IOS8 {
+            
+            self.phManager?.getPosterImageForAlbumObj(album: album, completion: { (ret, obj) in
+                
+                completion(ret, obj)
+            })
+        }
+    }
+    
+    
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - group: <#group description#>
+    ///   - completion: <#completion description#>
+    func getPhotosWith(group: AlbumObj, completion: ((_ ret: Bool?, _ obj: Any?)->())) -> () {
+        
+        if IS_IOS8 {
+            
+            self.phManager?.getPhotosWith(group: group, completion: { (ret, obj) in
+                
+                completion(ret, obj)
+            })
+        }
+    }
+    
+    
+    
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - asset: <#asset description#>
+    ///   - size: <#size description#>
+    ///   - completion: <#completion description#>
+    func getImageForPhotoObj(asset: PHAsset, size: CGSize, completion: @escaping ((_ ret: Bool?, _ obj: Any?)->())) -> () {
+        
+        if IS_IOS8 {
+            
+            self.phManager?.getImageForPHAsset(asset: asset, size: size, completion: { (ret, image) in
+                completion(ret, image)
+            })
+        }
+    }
+    
+    
+    func canAccessInPhotos() -> (Bool) {
+        
+        if IS_IOS8 {
+            
+            return (self.phManager?.canAccessInPhotos()) ?? false
+        }
+        else{
+            return false;
+        }
+    }
+    
 }
