@@ -11,7 +11,14 @@ import Photos
 
 class PHSourceManager: NSObject {
     
-    var manager: PHImageManager?
+    var manager: PHImageManager
+    
+    override init() {
+    
+        manager = PHImageManager()
+        
+        super.init()
+    }
     
     
     /// <#Description#>
@@ -96,7 +103,7 @@ class PHSourceManager: NSObject {
         
         let newSize = CGSize(width: size.width * scale, height: size.height * scale)
         
-        self.manager?.requestImage(for: asset,
+        self.manager.requestImage(for: asset,
                              targetSize: newSize,
                             contentMode: PHImageContentMode.aspectFill,
                                 options: options,
@@ -241,7 +248,7 @@ class PHSourceManager: NSObject {
         
         options.isSynchronous = true
         
-        self.manager?.requestImage(for: asset, targetSize: size, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (result, info) in
+        self.manager.requestImage(for: asset, targetSize: size, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (result, info) in
             completion(true, result)
         })
     }

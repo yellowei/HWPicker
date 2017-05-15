@@ -141,11 +141,11 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
             
             if ret ?? false {
                 
-                guard let obj = obj as? [Any] else {
+                guard let guardObj = obj as? [Any] else {
                     return
                 }
                 
-                self.assetsGroups = Array.init(arrayLiteral: obj)
+                self.assetsGroups = guardObj
                 
                 DispatchQueue.main.async {[weak self] in
                     
@@ -178,13 +178,30 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
         return self.assetsGroups?.count ?? 0
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+        let cellIdentifier = "PickerCell"
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? PhotoPickerCell
         
-        static String = "PickerCell"
+        if cell == nil {
+            
+            cell = PhotoPickerCell(style: .default, reuseIdentifier: cellIdentifier)
+            cell?.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        }
         
+        guard
+            let album = self.assetsGroups?[indexPath.row] as? AlbumObj,
+            let theCell = cell
+            else {
+            return UITableViewCell()
+        }
         
+        theCell.photoImageView.image = album.posterImage
+        theCell.titleLabel.text = album.name
+        theCell.countLabel.text = "(\(album.count)张)"
         
-        return UITableViewCell()
+        return theCell
     }
 
     //MARK: - UITableViewDelegate
@@ -202,6 +219,10 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let album = self.assetsGroups?[indexPath.row]
+        
+        let multiPicker = MultiPickerController()
+
     }
    
 
