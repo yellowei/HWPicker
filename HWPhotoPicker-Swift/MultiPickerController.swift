@@ -21,7 +21,7 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
     ///TableView
     private var aTableView: UITableView?
     ///相册数据相关模型
-    private var assetsGroup: AlbumObj?
+    private var assetsGroup: [AlbumObj]?
     ///
     private var elements: [Any]
     ///图像大小
@@ -132,7 +132,7 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         guard
-            let album = self.assetsGroup?[indexPath.row] as? AlbumObj,
+            let album = self.assetsGroup?[indexPath.row],
             let theCell = cell
             else {
                 return UITableViewCell()
@@ -160,7 +160,7 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let album = self.assetsGroups?[indexPath.row]
+        let album = self.assetsGroup?[indexPath.row]
         
         let multiPicker = MultiPickerController()
         

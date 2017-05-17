@@ -41,12 +41,26 @@ class MultiPickerCell: UITableViewCell {
     
     init?(style: UITableViewCellStyle, reuseIdentifier: String, imageSize: CGSize, numberOfAssets: Int, margin: Float) {
         
+        self.imageSize = imageSize
+        
+        self.numberOfElements = numberOfAssets
+        
+        self.margin = margin
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        return nil
+        
+        self.addElementsViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    //MARK: - 私有方法
+    private func addElementsViews(){
+        
+        
     }
     
     

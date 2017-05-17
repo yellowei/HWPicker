@@ -26,6 +26,8 @@
 		BC4845CE1EC9549800D0A1A6 /* MultiPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4845CD1EC9549800D0A1A6 /* MultiPickerCell.swift */; };
 		BCA6F1DF1EC5B4FE00F649D7 /* PhotoObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA6F1DE1EC5B4FD00F649D7 /* PhotoObj.swift */; };
 		BCA6F1E21EC5E58C00F649D7 /* PhotoPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA6F1E11EC5E58C00F649D7 /* PhotoPickerCell.swift */; };
+		BCD038641ECC0E7A00C2A115 /* PickerElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD038631ECC0E7900C2A115 /* PickerElementView.swift */; };
+		BCD038681ECC15F500C2A115 /* VideoElementInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD038671ECC15F500C2A115 /* VideoElementInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		BC4845CD1EC9549800D0A1A6 /* MultiPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPickerCell.swift; sourceTree = "<group>"; };
 		BCA6F1DE1EC5B4FD00F649D7 /* PhotoObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoObj.swift; sourceTree = "<group>"; };
 		BCA6F1E11EC5E58C00F649D7 /* PhotoPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerCell.swift; sourceTree = "<group>"; };
+		BCD038631ECC0E7900C2A115 /* PickerElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerElementView.swift; sourceTree = "<group>"; };
+		BCD038671ECC15F500C2A115 /* VideoElementInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoElementInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 			children = (
 				BCA6F1E11EC5E58C00F649D7 /* PhotoPickerCell.swift */,
 				BC4845CD1EC9549800D0A1A6 /* MultiPickerCell.swift */,
+				BCD038631ECC0E7900C2A115 /* PickerElementView.swift */,
+				BCD038671ECC15F500C2A115 /* VideoElementInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,8 +318,10 @@
 				BC3DEB9C1EC2B0510047F62C /* AppDelegate.swift in Sources */,
 				BC3DEBB31EC2B3D50047F62C /* PhotoPickerController.swift in Sources */,
 				BC3DEBC01EC2EA3C0047F62C /* Common.swift in Sources */,
+				BCD038681ECC15F500C2A115 /* VideoElementInfoView.swift in Sources */,
 				BC4845CE1EC9549800D0A1A6 /* MultiPickerCell.swift in Sources */,
 				BC277C0C1EC3193F007023E1 /* MomentCollection.swift in Sources */,
+				BCD038641ECC0E7A00C2A115 /* PickerElementView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
