@@ -33,7 +33,7 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK:- Private属性
     private var aTableView: UITableView?
-    private var assetsGroups: [Any]?
+    private var assetsGroups: [AlbumObj]?
     
     ///重写Init
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -137,11 +137,11 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
     /// 加载数据
     private func loadData() -> () {
         
-        ImageDataAPI.sharedInstance.getAlbumsWith { (ret, obj) in
+        ImageDataAPI.shared.getAlbumsWith { (ret, obj) in
             
             if ret ?? false {
                 
-                guard let guardObj = obj as? [Any] else {
+                guard let guardObj = obj as? [AlbumObj] else {
                     return
                 }
                 
@@ -222,6 +222,10 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
         let album = self.assetsGroups?[indexPath.row]
         
         let multiPicker = MultiPickerController()
+        multiPicker.delegate = self as? MultiPickerViewControllerDelegate
+        multiPicker.title = album?.name
+        multiPicker.filterType = filterType
+        multiPicker.assetsGroup = album
 
     }
    

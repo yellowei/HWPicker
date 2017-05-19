@@ -14,28 +14,38 @@ protocol MultiPickerViewControllerDelegate: NSObjectProtocol {
 
 class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //MARK: - public属性
+    var maximumNumberOfSelection: Int = 1
+    
     ///Delegate
     var delegate: MultiPickerViewControllerDelegate?
     
     //MARK:- Private属性
     ///TableView
     private var aTableView: UITableView?
-    ///相册数据相关模型
-    private var assetsGroup: [AlbumObj]?
+    
     ///
-    private var elements: [Any]
+    private var elements: [PhotoObj]
     ///图像大小
     private var imageSize: CGSize = CGSize(width: 0, height: 0)
+    
+    private var selectedElements: NSMutableOrderedSet
     
     
     ///是否支持多选
     var allowMutipleSelection: Bool = false;
     
+    var filterType: PhotoPickerFilterType = .pickerFilterTypeAllAssets
+    
+    ///相册数据相关模型
+    var assetsGroup: AlbumObj?
     
     ///重写init方法
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         
-        elements = [Any]()
+        elements = [PhotoObj]()
+        
+        selectedElements = NSMutableOrderedSet()
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -73,12 +83,53 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.imageSize = CGSize(width: 75, height: 75)
+        
+        if self.navigationItem.leftBarButtonItem == nil {
+            
+            let title = "返回"
+            let nameSize = CGSize(width: 30, height: 20)
+            let imgSize = CGSize(width: 11, height: 20)
+            let btnSize = CGSize(width: 53, height: 28)
+            
+            let btnLeft = UIButton.init(type: .custom)
+            btnLeft.frame = CGRect(x: 0, y: 0, width: btnSize.width, height: btnSize.height)
+            btnLeft.setTitle(title, for: .normal)
+            btnLeft.setTitleColor(UIColor.black, for: .normal)
+            btnLeft.setImage(UIImage.init(named: "btn_navi_return_title"), for: .normal)
+            btnLeft.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            btnLeft.addTarget(self, action: #selector(goBack(sender:)), for: .touchUpInside)
+            btnLeft.imageEdgeInsets = UIEdgeInsetsMake((btnLeft.bounds.size.height - imgSize.height),
+                                                       (btnLeft.bounds.size.width - (imgSize.width + nameSize.width + 8)) / 2,
+                                                       (btnLeft.bounds.size.height - imgSize.height) / 2,
+                                                       btnLeft.bounds.size.width - ((btnSize.width - (imgSize.width + nameSize.width + 8)) / 2) - imgSize.width)
+            btnLeft.titleEdgeInsets = UIEdgeInsetsMake(0,
+                                                       -((btnLeft.imageView?.image?.size.width) ?? 0.0) + imgSize.width + 8,
+                                                       0,
+                                                       0)
+            
+            let leftItem = UIBarButtonItem.init(customView: btnLeft)
+            self.navigationItem.leftBarButtonItem = leftItem
+        }
+        
+        //rightBtn
+        let btnRight = UIButton.init(type: .custom)
+        btnRight.frame = CGRect(x: 0, y: 0, width: 45, height: 30)
+        btnRight.setTitle("完成", for: .normal)
+        btnRight.setTitleColor(UIColor.black, for: .normal)
+        btnRight.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        btnRight.addTarget(self, action: #selector(dissmiss), for: .touchUpInside)
+        let rightItem = UIBarButtonItem.init(customView: btnRight)
+        if self.maximumNumberOfSelection > 1 {
+            self.navigationItem.rightBarButtonItem = rightItem
+        }
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
     
     
@@ -92,6 +143,17 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
         aTableView?.separatorStyle = .singleLine
         aTableView?.separatorColor = UIColor.color(hex: 0xececec)
         view.addSubview(aTableView!)
+    }
+    
+    //MARK: - Events
+    @objc private func goBack(sender: UIButton) {
+        
+    }
+    
+    @objc private func dissmiss() {
+        self.dismiss(animated: true) {
+            
+        }
     }
 
     
@@ -123,26 +185,50 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "MutilPickerCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? PhotoPickerCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? MultiPickerCell
         
         if cell == nil {
             
-            cell = PhotoPickerCell(style: .default, reuseIdentifier: cellIdentifier)
-            cell?.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+            //计算一行显示几个
+            var numberOfAssetsInRow = 0
+            if self.imageSize.width > 0 {
+                numberOfAssetsInRow = Int(self.view.bounds.size.width / self.imageSize.width)
+            }
+            
+            //计算间距
+            let margin = round(self.view.bounds.size.width - self.imageSize.width * CGFloat(numberOfAssetsInRow) / CGFloat(numberOfAssetsInRow + 1))
+            cell = MultiPickerCell.init(style: .default, reuseIdentifier: cellIdentifier, imageSize: self.imageSize, numberOfAssets: numberOfAssetsInRow, margin: margin)
+            cell?.selectionStyle = .none
+            cell?.delegate = self as? MultiPickerCellDelegate
+            cell?.allowsMultipleSelection = self.allowMutipleSelection
         }
         
-        guard
-            let album = self.assetsGroup?[indexPath.row],
-            let theCell = cell
-            else {
-                return UITableViewCell()
+        let numberOfAssetsInRow = Int(self.view.bounds.size.width / self.imageSize.width)
+        let offset = numberOfAssetsInRow * indexPath.row
+        let numberOfAssetsToSet = (offset + numberOfAssetsInRow > self.elements.count) ? (self.elements.count - offset) : numberOfAssetsInRow
+        
+        var assets = [PhotoObj]()
+        for i in 0..<numberOfAssetsToSet {
+            
+            let asset = self.elements[offset + i]
+            assets.append(asset)
         }
         
-        theCell.photoImageView.image = album.posterImage
-        theCell.titleLabel.text = album.name
-        theCell.countLabel.text = "(\(album.count)张)"
+        cell?.elements = assets
         
-        return theCell
+        for i in 0..<numberOfAssetsToSet {
+         
+            let asset = self.elements[offset + i]
+            
+            if self.selectedElements.contains(asset) {
+                cell?.selectElementAtIndex(index: i)
+            }else{
+                cell?.deselectElementAtIndex(index: i)
+            }
+            
+        }
+        
+        return cell!
     }
     
     //MARK: - UITableViewDelegate
@@ -160,9 +246,6 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let album = self.assetsGroup?[indexPath.row]
-        
-        let multiPicker = MultiPickerController()
         
     }
 

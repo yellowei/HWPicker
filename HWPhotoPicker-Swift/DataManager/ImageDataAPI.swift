@@ -13,7 +13,7 @@ class ImageDataAPI: NSObject {
     
 
     ///MARK: - 单例
-    static let sharedInstance = ImageDataAPI()
+    static let shared = ImageDataAPI()
     
     //MARK: - 属性
     var phManager: PHSourceManager?
