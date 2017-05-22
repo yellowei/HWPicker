@@ -172,7 +172,7 @@ class PickerElementView: UIView {
             
             self.selected = false
             
-            if (self.delegate?.responds(to: #selector(PickerElementViewDelegate.elementViewDidChangeSelectionState(selectionState:elementView:))))! {
+            if self.delegate?.responds(to: #selector(PickerElementViewDelegate.elementViewDidChangeSelectionState(selectionState:elementView:))) ?? false {
                 
                 self.delegate?.elementViewDidChangeSelectionState!(selectionState: self.selected, elementView: self)
             }
@@ -181,7 +181,7 @@ class PickerElementView: UIView {
             
             if (self.delegate?.elementViewCanSelect!(elementView: self))! {
                 
-                if (self.delegate?.responds(to: #selector(PickerElementViewDelegate.elementViewCanSelect(elementView:))))! {
+                if self.delegate?.responds(to: #selector(PickerElementViewDelegate.elementViewCanSelect(elementView:))) ?? false {
                     
                     self.selected = true
                     self.delegate?.elementViewDidChangeSelectionState!(selectionState: self.selected, elementView: self)
@@ -194,7 +194,7 @@ class PickerElementView: UIView {
         
         if self.allowMultipleSelect {
             
-            if (self.delegate?.responds(to: #selector(PickerElementViewDelegate.elementViewDidChangeSelectionState(selectionState:elementView:))))! {
+            if self.delegate?.responds(to: #selector(PickerElementViewDelegate.elementViewDidChangeSelectionState(selectionState:elementView:))) ?? false {
                 
                 self.delegate?.elementViewShowBigImage!(elementView: self)
                 
@@ -205,7 +205,7 @@ class PickerElementView: UIView {
             
             self.thumbnail()
             
-            if (self.delegate?.responds(to: #selector(PickerElementViewDelegate.elementViewDidChangeSelectionState(selectionState:elementView:))))! {
+            if self.delegate?.responds(to: #selector(PickerElementViewDelegate.elementViewDidChangeSelectionState(selectionState:elementView:))) ?? false {
                 
                 self.delegate?.elementViewDidChangeSelectionState!(selectionState: self.selected, elementView: self)
                 

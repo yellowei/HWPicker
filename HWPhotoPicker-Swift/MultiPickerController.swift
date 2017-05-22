@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import Photos
 
-protocol MultiPickerViewControllerDelegate: NSObjectProtocol {
-    func didFinishPickingWithImages(picker: MultiPickerController, images: [Any]) -> ()
+@objc protocol MultiPickerViewControllerDelegate: NSObjectProtocol {
+    @objc optional func didFinishPickingWithImages(picker: MultiPickerController, images: [Any]) -> ()
 }
 
-class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewDataSource, MultiPickerCellDelegate {
     
     //MARK: - public属性
     var maximumNumberOfSelection: Int = 1
+    
+    var limitsMaximumNumberOfSelection: Bool = false
     
     ///Delegate
     var delegate: MultiPickerViewControllerDelegate?
@@ -39,6 +42,8 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
     
     ///相册数据相关模型
     var assetsGroup: AlbumObj?
+    
+    //MARK: - 生命周期方法
     
     ///重写init方法
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -64,7 +69,7 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
         
         let statusBarHeight = min(statusBarFrame.width, statusBarFrame.height)
         
-        screenBounds = CGRect(x: screenBounds.origin.x, y: screenBounds.origin.y, width: screenBounds.width, height: statusBarHeight)
+        screenBounds = CGRect(x: screenBounds.origin.x, y: screenBounds.origin.y, width: screenBounds.width, height: screenBounds.height - statusBarHeight)
         
         let mView = UIView.init(frame: screenBounds)
         
@@ -124,12 +129,37 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
             self.navigationItem.rightBarButtonItem = rightItem
         }
         
+        let titleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
+        titleLabel.textColor = UIColor.black
+        titleLabel.backgroundColor = UIColor.clear
+        titleLabel.textAlignment = NSTextAlignment.center
+        titleLabel.text = self.title
+        self.navigationItem.titleView = titleLabel
+        
         
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        if self.elements.count > 0 {
+            elements.removeAll()
+        }
+        
+        guard let guardAlbumObj = self.assetsGroup else {
+            return
+        }
+        
+        ImageDataAPI.shared.getPhotosWith(group: guardAlbumObj) { (ret, obj) in
+            
+            guard let photoObjArr = obj as? [PhotoObj] else {
+                return
+            }
+            
+            self.elements.append(contentsOf: photoObjArr)
+        }
+        
+        self.aTableView?.reloadData()
     }
     
     
@@ -148,12 +178,51 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: - Events
     @objc private func goBack(sender: UIButton) {
         
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc private func dissmiss() {
-        self.dismiss(animated: true) {
+        
+        if self.selectedElements.count > 0 {
             
+            var infoArray = [Any]()
+            
+            for asset in self.selectedElements {
+                
+                guard let guardAsset = asset as? PhotoObj,
+                      let guardPhAsset = guardAsset.photoObj
+                    else {
+                    continue
+                }
+                
+                ImageDataAPI.shared.getImageForPhotoObj(asset: guardPhAsset, size: (IS_IOS8 ? PHImageManagerMaximumSize : CGSize.zero), completion: { (ret, image) in
+                    
+                    var dict = [String: Any]()
+                    
+                    if let image = image {
+                        dict.updateValue(image, forKey: "IMG")
+                    }
+                    dict.updateValue(0, forKey: "SIZE")
+                    dict.updateValue("", forKey: "NAME")
+                    infoArray.append(dict)
+                })
+            }
+            
+            if self.delegate?.responds(to: #selector(MultiPickerViewControllerDelegate.didFinishPickingWithImages(picker:images:))) ?? false {
+                
+                self.delegate?.didFinishPickingWithImages!(picker: self, images: infoArray)
+            }
+            self.dismiss(animated: true, completion: nil)
+            
+        }else {
+            
+            self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @objc private func onBackTouch(sender: UIButton?) {
+        
+//        UIView.transition(with: , duration: <#T##TimeInterval#>, options: <#T##UIViewAnimationOptions#>, animations: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
     }
 
     
@@ -196,7 +265,7 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
             //计算间距
-            let margin = round(self.view.bounds.size.width - self.imageSize.width * CGFloat(numberOfAssetsInRow) / CGFloat(numberOfAssetsInRow + 1))
+            let margin = round((self.view.bounds.size.width - self.imageSize.width * CGFloat(numberOfAssetsInRow)) / CGFloat(numberOfAssetsInRow + 1))
             cell = MultiPickerCell.init(style: .default, reuseIdentifier: cellIdentifier, imageSize: self.imageSize, numberOfAssets: numberOfAssetsInRow, margin: margin)
             cell?.selectionStyle = .none
             cell?.delegate = self as? MultiPickerCellDelegate
@@ -244,10 +313,34 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
         return 85
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    //MARK: - MultiPickerCellDelegate
+    func canSelectElementAtIndex(pickerCell: MultiPickerCell, elementIndex: Int) -> (Bool) {
+        
+        var canSelect = true
+        
+        if self.allowMutipleSelection && self.limitsMaximumNumberOfSelection {
+        
+            canSelect = (self.selectedElements.count < self.maximumNumberOfSelection)
+        }
+        
+        if !canSelect {
+            
+            let alertView = UIAlertView.init(title: "提示", message: "一次选择的图片不得超过\(self.maximumNumberOfSelection)张", delegate: nil, cancelButtonTitle: "确定")
+            alertView.show()
+        }
+        
+        return canSelect
+    }
+    
+    func didChangeElementSeletionState(pickerCell: MultiPickerCell, isSelected: Bool, atIndex: Int) {
+        
+    }
+    
+    func showBigImageWith(imageIndex: Int, pickerCell: MultiPickerCell) {
         
         
     }
-
+    
 
 }

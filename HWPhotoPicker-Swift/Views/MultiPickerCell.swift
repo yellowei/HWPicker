@@ -144,7 +144,7 @@ class MultiPickerCell: UITableViewCell, PickerElementViewDelegate {
     //MARK: - PickerElementViewDelegate
     func elementViewCanSelect(elementView: PickerElementView) -> (Bool) {
         
-        if (self.delegate?.responds(to: #selector(MultiPickerCellDelegate.canSelectElementAtIndex(pickerCell:elementIndex:))))! {
+        if (self.delegate?.responds(to: #selector(MultiPickerCellDelegate.canSelectElementAtIndex(pickerCell:elementIndex:)))) ?? false {
             
             return (self.delegate?.canSelectElementAtIndex!(pickerCell: self, elementIndex: elementView.tag - PICKER_ELEMENT_VIEW_TAG))!
         }
@@ -153,7 +153,7 @@ class MultiPickerCell: UITableViewCell, PickerElementViewDelegate {
     
     func elementViewDidChangeSelectionState(selectionState: Bool, elementView: PickerElementView) {
         
-        if (self.delegate?.responds(to: #selector(MultiPickerCellDelegate.didChangeElementSeletionState(pickerCell:isSelected:atIndex:))))! {
+        if (self.delegate?.responds(to: #selector(MultiPickerCellDelegate.didChangeElementSeletionState(pickerCell:isSelected:atIndex:)))) ?? false {
             
             self.delegate?.didChangeElementSeletionState!(pickerCell: self, isSelected: selectionState, atIndex: elementView.tag - PICKER_ELEMENT_VIEW_TAG)
         }
@@ -161,7 +161,7 @@ class MultiPickerCell: UITableViewCell, PickerElementViewDelegate {
     
     func elementViewShowBigImage(elementView: PickerElementView) {
         
-        if (self.delegate?.responds(to: #selector(MultiPickerCellDelegate.showBigImageWith(imageIndex:pickerCell:))))! {
+        if (self.delegate?.responds(to: #selector(MultiPickerCellDelegate.showBigImageWith(imageIndex:pickerCell:)))) ?? false {
             
             self.delegate?.showBigImageWith!(imageIndex: elementView.tag - PICKER_ELEMENT_VIEW_TAG, pickerCell: self)
         }

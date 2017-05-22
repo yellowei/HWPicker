@@ -26,7 +26,7 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
     var delegate: PhotoPickerControllerDelegate?
     
     ///Maximum Selected Count
-    var maxImageCount: UInt = 1
+    var maxImageCount: Int = 1
     
     ///pickerFilterType
     var filterType: PhotoPickerFilterType
@@ -226,7 +226,17 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
         multiPicker.title = album?.name
         multiPicker.filterType = filterType
         multiPicker.assetsGroup = album
-
+        multiPicker.maximumNumberOfSelection = self.maxImageCount
+        if multiPicker.maximumNumberOfSelection > 1 {
+            
+            multiPicker.allowMutipleSelection = true
+            multiPicker.limitsMaximumNumberOfSelection = true
+        }else {
+            multiPicker.allowMutipleSelection = false
+        }
+        
+        self.navigationController?.pushViewController(multiPicker, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
    
 
