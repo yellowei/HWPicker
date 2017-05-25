@@ -13,26 +13,54 @@ import Photos
     @objc optional func didFinishPickingWithImages(picker: MultiPickerController, images: [Any]) -> ()
 }
 
-class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewDataSource, MultiPickerCellDelegate {
+class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewDataSource, MultiPickerCellDelegate, HWScrollViewDelegate {
+    
+    //MARK: - 伪装的宏定义
+//    private let
+    
+    
     
     //MARK: - public属性
     var maximumNumberOfSelection: Int = 1
-    
     var limitsMaximumNumberOfSelection: Bool = false
-    
     ///Delegate
     var delegate: MultiPickerViewControllerDelegate?
+    
+    
+    
     
     //MARK:- Private属性
     ///TableView
     private var aTableView: UITableView?
-    
-    ///
     private var elements: [PhotoObj]
     ///图像大小
     private var imageSize: CGSize = CGSize(width: 0, height: 0)
-    
     private var selectedElements: NSMutableOrderedSet
+    private var _bigImgScroll: HWScrollView?
+    private var bigImgScroll: HWScrollView {
+        get {
+            if _bigImgScroll == nil {
+                
+                _bigImgScroll = HWScrollView.init(frame: UIScreen.main.bounds)
+                _bigImgScroll?.backgroundColor = UIColor.init(white: 0, alpha: 0.9)
+                _bigImgScroll?.delegate = self as? HWScrollViewDelegate
+
+            }
+            return _bigImgScroll!
+        }
+        set {
+            _bigImgScroll = newValue
+        }
+    }
+    
+    //MARK: - showBigImg相关的视图
+    var m_topView: UIView?
+    var m_labDate: UILabel?
+    var m_backBtn: UIButton?
+    var m_bottomView: UIView?
+    var m_overlayImageView: UIButton?
+    var m_currentPage: Int = 0
+    var m_labBigImageInfo: UILabel?
     
     
     ///是否支持多选
@@ -339,7 +367,21 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
     
     func showBigImageWith(imageIndex: Int, pickerCell: MultiPickerCell) {
         
+        guard let indexPath = self.aTableView?.indexPath(for: pickerCell) else {return}
+        let numberOfAssetsInRow = Int(self.view.bounds.size.width / self.imageSize.width)
+        let assetIndex = indexPath.row * numberOfAssetsInRow + imageIndex
+        self.view .addSubview(self.bigImgScroll)
         
+        m_currentPage = assetIndex
+        self.bigImgScroll.startWith(imageArray: self.elements, currentIndex: assetIndex)
+        
+        //顶视图
+        if m_topView == nil {
+            
+            m_topView = UIView.init(frame: CGRect(x: 0, y: 0, width: kECScreenWidth, height: 64))
+            m_topView?.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+            self.bigImgScroll.addSubview(m_topView!)
+        }
     }
     
 

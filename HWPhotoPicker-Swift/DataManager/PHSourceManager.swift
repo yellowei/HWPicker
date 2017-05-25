@@ -248,7 +248,11 @@ class PHSourceManager: NSObject {
         
         options.isSynchronous = true
         
-        self.manager.requestImage(for: asset, targetSize: size, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (result, info) in
+        self.manager.requestImage(for: asset,
+                                  targetSize: size,
+                                  contentMode: PHImageContentMode.aspectFill,
+                                  options: options,
+                                  resultHandler: { (result, info) in
             completion(true, result)
         })
     }

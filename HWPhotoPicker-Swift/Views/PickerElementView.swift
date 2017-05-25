@@ -111,7 +111,7 @@ class PickerElementView: UIView {
         self.addSubview(overlayImageView)
         
         //添加一个手势
-        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(onSelectedClick(sender:)))
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(onSelfClick(sender:)))
         self.addGestureRecognizer(tapGesture)
     }
     
