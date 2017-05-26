@@ -37,9 +37,8 @@ class PHSourceManager: NSObject {
         var momArray: [Any] = []
 
         for i in 0 ..< momentRes.count {
-            
-            guard let collection = momentRes.object(at: i) as? PHAssetCollection,
-                  let endDate = collection.endDate
+            let collection = momentRes[i]
+            guard let endDate = collection.endDate
                   else { return }
             
             let unitFlags = Set<Calendar.Component>([.day, .month, .year])

@@ -601,21 +601,24 @@ class MultiPickerController: UIViewController, UITableViewDelegate, UITableViewD
             m_bottomView?.addSubview(bottomLine)
             
             //Overlay Image View
-            m_overlayImageView = UIButton.init(type: .custom)
-            m_overlayImageView?.frame = CGRect(x: (m_bottomView?.frame.size.width ?? 0.0) - 35.0,
-                                               y: ((m_bottomView?.frame.size.height ?? 0.0) - 25.0) / 2.0,
-                                               width: 25,
-                                               height: 25)
-            m_overlayImageView?.contentMode = .scaleAspectFill
-            m_overlayImageView?.layer.cornerRadius = 12.5
-            m_overlayImageView?.clipsToBounds = true
-            m_overlayImageView?.backgroundColor = UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
-            m_overlayImageView?.setBackgroundImage(UIImage.init(named: "photopicker_nor.png"), for: .normal)
-            m_overlayImageView?.setBackgroundImage(UIImage.init(named: "photopicker_sel.png"), for: .selected)
-            m_overlayImageView?.autoresizingMask = kECAutoResizingMask
-            m_overlayImageView?.clipsToBounds = true
-            m_overlayImageView?.addTarget(self, action: #selector(onSelectedClick(sender:)), for: .touchUpInside)
-            m_bottomView?.addSubview(m_overlayImageView!)
+            if self.allowMutipleSelection {
+                m_overlayImageView = UIButton.init(type: .custom)
+                m_overlayImageView?.frame = CGRect(x: (m_bottomView?.frame.size.width ?? 0.0) - 35.0,
+                                                   y: ((m_bottomView?.frame.size.height ?? 0.0) - 25.0) / 2.0,
+                                                   width: 25,
+                                                   height: 25)
+                m_overlayImageView?.contentMode = .scaleAspectFill
+                m_overlayImageView?.layer.cornerRadius = 12.5
+                m_overlayImageView?.clipsToBounds = true
+                m_overlayImageView?.backgroundColor = UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+                m_overlayImageView?.setBackgroundImage(UIImage.init(named: "photopicker_nor.png"), for: .normal)
+                m_overlayImageView?.setBackgroundImage(UIImage.init(named: "photopicker_sel.png"), for: .selected)
+                m_overlayImageView?.autoresizingMask = kECAutoResizingMask
+                m_overlayImageView?.clipsToBounds = true
+                m_overlayImageView?.addTarget(self, action: #selector(onSelectedClick(sender:)), for: .touchUpInside)
+                m_bottomView?.addSubview(m_overlayImageView!)
+            }
+            
             
             //页码显示label
             m_labBigImageInfo = UILabel.init(frame: CGRect(x: (self.view.frame.size.width - LabBigImageInfoWidth) / 2.0,

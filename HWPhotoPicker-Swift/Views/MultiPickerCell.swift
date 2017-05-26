@@ -118,7 +118,7 @@ class MultiPickerCell: UITableViewCell, PickerElementViewDelegate {
             let elementViewFrame = CGRect(x: offset + self.margin, y: self.margin, width: self.imageSize.width, height: self.imageSize.height)
             
             let elementView = PickerElementView.init(frame: elementViewFrame)
-            elementView.delegate = self as? PickerElementViewDelegate
+            elementView.delegate = self
             elementView.tag = PICKER_ELEMENT_VIEW_TAG + i
             elementView.autoresizingMask = UIViewAutoresizing.init(rawValue: 0)
             

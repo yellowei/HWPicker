@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let imagePickerController = PhotoPickerController()
         imagePickerController.title = "本地相册"
         imagePickerController.delegate = self
-        imagePickerController.maxImageCount = 10
+        imagePickerController.maxImageCount = 1//instead of 10
         imagePickerController.filterType = .pickerFilterTypeAllPhotos
         let naviController = UINavigationController.init(rootViewController: imagePickerController)
         self.present(naviController, animated: true) { 
