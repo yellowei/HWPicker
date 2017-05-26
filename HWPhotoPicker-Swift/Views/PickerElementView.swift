@@ -113,6 +113,10 @@ class PickerElementView: UIView {
         //添加一个手势
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(onSelfClick(sender:)))
         self.addGestureRecognizer(tapGesture)
+        
+        let longGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(onSelfLongClick(sender:)))
+        tapGesture.require(toFail: longGesture)
+        self.addGestureRecognizer(longGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -210,6 +214,23 @@ class PickerElementView: UIView {
                 self.delegate?.elementViewDidChangeSelectionState!(selectionState: self.selected, elementView: self)
                 
             }
+            
+        }
+    }
+    
+    @objc private func onSelfLongClick(sender: UILongPressGestureRecognizer?) {
+        
+        if self.allowMultipleSelect == false {
+            
+            if sender?.state == UIGestureRecognizerState.began {
+                
+                if self.delegate?.responds(to: #selector(PickerElementViewDelegate.elementViewDidChangeSelectionState(selectionState:elementView:))) ?? false {
+                    
+                    self.delegate?.elementViewShowBigImage!(elementView: self)
+                    
+                }
+            }
+            
             
         }
     }

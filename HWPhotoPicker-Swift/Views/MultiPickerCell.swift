@@ -21,7 +21,7 @@ import UIKit
 
 class MultiPickerCell: UITableViewCell, PickerElementViewDelegate {
     
-    private let PICKER_ELEMENT_VIEW_TAG = 1
+//    private let PICKER_ELEMENT_VIEW_TAG = 1
     
     ///MultiPickerCellDelegate
     var delegate: MultiPickerCellDelegate?

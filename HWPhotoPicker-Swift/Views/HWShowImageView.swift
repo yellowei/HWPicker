@@ -19,12 +19,15 @@ class HWShowImageView: UIScrollView, UIScrollViewDelegate {
     private var activityIndicatorView: UIActivityIndicatorView?
     private var singleTaps: UITapGestureRecognizer?
     private var netLabel: UILabel?
-    
+    private var isZoomed: Bool {
+        get{
+            return self.zoomScale == 0.99 ? false : true
+        }
+    }
     
     //MARK: - 公开属性
     var image: UIImage?
     var imageData: Any?
-    
     ///逆向传值闭包
     var singleTapBlock: ((_ tap: UITapGestureRecognizer) -> ())?
     var saveResultBlock: ((_ result: Error?) -> ())?
@@ -47,10 +50,10 @@ class HWShowImageView: UIScrollView, UIScrollViewDelegate {
         self.bouncesZoom = false
         
         //设置代理
-        self.delegate = self as? UIScrollViewDelegate
+        self.delegate = self
         
         imageView.contentMode = .scaleAspectFit
-        imageView.isUserInteractionEnabled = false
+        imageView.isUserInteractionEnabled = true
         
         self.clipsToBounds = false
         imageView.clipsToBounds = false
@@ -82,10 +85,17 @@ class HWShowImageView: UIScrollView, UIScrollViewDelegate {
     //MARK: - Events
     @objc private func tapAction(tap: UITapGestureRecognizer) {
         
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(onTouch(tap:)), object: singleTaps)
+        
+        let point = tap.location(in: tap.view)
+        self.zoom(to: point)
     }
     
     @objc private func onTouch(tap: UITapGestureRecognizer) {
     
+        if self.singleTapBlock != nil {
+            self.singleTapBlock!(tap)
+        }
     }
     
     
@@ -137,14 +147,14 @@ class HWShowImageView: UIScrollView, UIScrollViewDelegate {
             self.dataImage = tempImage
             imageView.image = tempImage
         }
-        else if let imageData = self.imageData as? URL {
-            
-            
-        }
-        else if let imageData = self.imageData as? UIImage {
-            
-            
-        }
+//        else if let imageData = self.imageData as? URL {
+//            
+//            
+//        }
+//        else if let imageData = self.imageData as? UIImage {
+//            
+//            
+//        }
         else if let imageData = self.imageData as? PhotoObj {
             
             guard let guardPHAsset = imageData.photoObj else {
@@ -206,8 +216,8 @@ class HWShowImageView: UIScrollView, UIScrollViewDelegate {
         imgView.image = UIImage.init(named: "icon_common_waiting")
         customView.addSubview(imgView)
         
-        var rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
-        rotationAnimation.toValue = M_PI * 2.0
+        let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = .pi * 2.0
         rotationAnimation.duration = 1
         rotationAnimation.isCumulative = true
         rotationAnimation.repeatCount = MAXFLOAT
@@ -246,6 +256,30 @@ class HWShowImageView: UIScrollView, UIScrollViewDelegate {
             customerHUD = nil
         }
     }
+    
+    ///双击放大图片的手势
+    private func zoom(to point: CGPoint) {
+
+        let zoomRect = self.isZoomed ? self.bounds : self.zoomRect(for: self.maximumZoomScale, center: point)
+        
+        self.zoom(to: zoomRect, animated: true)
+    }
+    
+    
+    private func zoomRect(for scale: CGFloat, center: CGPoint) -> (CGRect){
+        
+        var zoomRect = self.frame
+        
+        zoomRect.size.height /= scale
+        zoomRect.size.width /= scale
+        
+        zoomRect.origin.x = center.x - (zoomRect.size.width / 2.0)
+        zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0)
+        
+        return zoomRect
+    
+    }
+    
     
     //MARK: - UIScrollViewDelegate
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

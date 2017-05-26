@@ -50,7 +50,7 @@ class HWScrollView: UIView, UIScrollViewDelegate {
         SELFHEIGHT = self.bounds.size.height
         
         _mainScrollView.isPagingEnabled = true
-        _mainScrollView.delegate = self as? UIScrollViewDelegate
+        _mainScrollView.delegate = self
         _mainScrollView.contentSize = CGSize(width: SELFWIDTH * 3, height: SELFHEIGHT)
         _mainScrollView.bounces = false
         _mainScrollView.showsHorizontalScrollIndicator = false
@@ -122,12 +122,12 @@ class HWScrollView: UIView, UIScrollViewDelegate {
         
         //Left Page
         let leftImageView = HWShowImageView.init(frame: CGRect(x: 0, y: 0, width: WIDTH, height: HEIGHT))
-        leftImageView.setImageData(newValue: self.imageDatasArray?[current_page])
+        leftImageView.setImageData(newValue: self.imageDatasArray?[left_page])
         _mainScrollView.addSubview(leftImageView)
         
         //Right Page
         let rightImageView = HWShowImageView.init(frame: CGRect(x: WIDTH * 2.0, y: 0, width: WIDTH, height: HEIGHT))
-        rightImageView.setImageData(newValue: self.imageDatasArray?[current_page])
+        rightImageView.setImageData(newValue: self.imageDatasArray?[right_page])
         _mainScrollView.addSubview(rightImageView)
         
         _mainScrollView.setContentOffset(CGPoint(x: self.frame.size.width, y: 0), animated: false)
@@ -135,6 +135,52 @@ class HWScrollView: UIView, UIScrollViewDelegate {
     }
     
     //MARK: - UIScrollViewDelegate
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let currentPageTmp = scrollView.contentOffset.x / kECScreenWidth
+        
+        let currentPage = Int(currentPageTmp + 0.4)
+        
+        if _scrollCurrentIndex != currentPage {
+            
+            //这个变量用来判断页码是否改变
+            let delta = currentPage - _scrollCurrentIndex
+            _scrollCurrentIndex = currentPage
+            
+            if let dataCount = self.imageDatasArray?.count {
+                
+                if delta < 0 {
+                    
+                    current_page = current_page - 1 < 0 ? (dataCount - 1) : (current_page - 1)
+                    left_page = current_page - 1 < 0 ? (dataCount - 1) : (current_page - 1)
+                    right_page = current_page + 1 < dataCount ? (current_page + 1) : 0
+                    
+                }else {
+                    
+                    current_page = current_page + 1 < dataCount ? (current_page + 1) : 0
+                    left_page = current_page - 1 < 0 ? (dataCount - 1) : (current_page - 1)
+                    right_page = current_page + 1 < dataCount ? (current_page + 1) : 0
+                }
+                
+            }
+            
+            if (self.delegate?.responds(to: #selector(HWScrollViewDelegate.scrollToNextStateWithIndex(leftIndex:middleIndex:rightIndex:)))) ?? false {
+                
+                self.delegate?.scrollToNextStateWithIndex!(leftIndex: left_page, middleIndex: current_page, rightIndex: right_page)
+            }
+            
+        }
+        
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        if let _ = self.imageDatasArray?.count {
+            
+            self.loadImageDatasPage()
+        }
+    }
+    
     
     
 }

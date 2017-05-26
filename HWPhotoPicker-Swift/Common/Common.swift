@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 
+let PICKER_ELEMENT_VIEW_TAG = 1
+
 let IS_IOS7 = (UIDevice.current.systemVersion as NSString).doubleValue >= 7.0
 let IS_IOS8 = (UIDevice.current.systemVersion as NSString).doubleValue >= 8.0
 
@@ -16,3 +18,4 @@ let kECScreenWidth = UIScreen.main.bounds.size.width
 let kECScreenHeight = UIScreen.main.bounds.size.height
 
 let kECAutoResizingMask = UIViewAutoresizing.init(rawValue: (UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue))
+

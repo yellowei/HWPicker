@@ -15,11 +15,11 @@ enum PhotoPickerFilterType {
     case pickerFilterTypeAllVideos
 }
 
-protocol PhotoPickerControllerDelegate: NSObjectProtocol {
-    func didFinishPickingWithImages(picker: PhotoPickerController, images: [Any])
+@objc protocol PhotoPickerControllerDelegate: NSObjectProtocol {
+    @objc optional func didFinishPickingWithImages(picker: PhotoPickerController, images: [Any])
 }
 
-class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewDataSource, MultiPickerViewControllerDelegate {
 
     //MARK:- Public属性
     ///Delegate
@@ -89,9 +89,15 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
         }
         else if authorStatus == .restricted || authorStatus == .denied
         {
-            let alert: UIAlertView = UIAlertView(title: "提示", message: "没有访问照片的权限,您可以去系统设置[设置-隐私-照片]中为牙医管家开启照片功能", delegate:(self as! UIAlertViewDelegate), cancelButtonTitle: "确定")
-            alert.tag = 1001
-            alert.show()
+            let alertView = UIAlertController.init(title: "提示", message: "没有访问照片的权限,您可以去系统设置[设置-隐私-照片]中为牙医管家开启照片功能", preferredStyle: .alert)
+            
+            alertView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [weak self] (alertAction) in
+                
+                self?.dissmiss()
+                
+            }))
+            
+            self.present(alertView, animated: true, completion: nil)
         }
         else
         {
@@ -191,7 +197,7 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         guard
-            let album = self.assetsGroups?[indexPath.row] as? AlbumObj,
+            let album = self.assetsGroups?[indexPath.row],
             let theCell = cell
             else {
             return UITableViewCell()
@@ -222,7 +228,7 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
         let album = self.assetsGroups?[indexPath.row]
         
         let multiPicker = MultiPickerController()
-        multiPicker.delegate = self as? MultiPickerViewControllerDelegate
+        multiPicker.delegate = self
         multiPicker.title = album?.name
         multiPicker.filterType = filterType
         multiPicker.assetsGroup = album
@@ -239,5 +245,15 @@ class PhotoPickerController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
     }
    
+    
+    //MARK: - MultiPickerViewControllerDelegate
+    func didFinishPickingWithImages(picker: MultiPickerController, images: [Any]) {
+        
+        if (self.delegate?.responds(to: #selector(PhotoPickerControllerDelegate.didFinishPickingWithImages(picker:images:)))) ?? false {
+            
+            self.delegate?.didFinishPickingWithImages!(picker: self, images: images)
+        }
+        
+    }
 
 }

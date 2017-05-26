@@ -34,6 +34,7 @@
 		BCF039661ED290C200C48A94 /* photopicker_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF039621ED290C200C48A94 /* photopicker_sel.png */; };
 		BCF039681ED291AE00C48A94 /* HWScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF039671ED291AE00C48A94 /* HWScrollView.swift */; };
 		BCF0396A1ED2B34800C48A94 /* HWShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF039691ED2B34800C48A94 /* HWShowImageView.swift */; };
+		BCF9BA811ED825EB002FCEE2 /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF9BA801ED825EB002FCEE2 /* String+Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		BCF039621ED290C200C48A94 /* photopicker_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photopicker_sel.png; sourceTree = "<group>"; };
 		BCF039671ED291AE00C48A94 /* HWScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HWScrollView.swift; sourceTree = "<group>"; };
 		BCF039691ED2B34800C48A94 /* HWShowImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HWShowImageView.swift; sourceTree = "<group>"; };
+		BCF9BA801ED825EB002FCEE2 /* String+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +137,8 @@
 				BC3DEBBE1EC2EA340047F62C /* Common */,
 				BC3DEBB91EC2E7780047F62C /* Category */,
 				BC3DEBB61EC2B9380047F62C /* DataModel */,
-				BC3DEBB21EC2B3D50047F62C /* PhotoPickerController.swift */,
 				BC3DEBB41EC2B8990047F62C /* MultiPickerController.swift */,
+				BC3DEBB21EC2B3D50047F62C /* PhotoPickerController.swift */,
 			);
 			path = "HWPhotoPicker-Swift";
 			sourceTree = "<group>";
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				BC3DEBBC1EC2E79D0047F62C /* UIColor+Extension.swift */,
+				BCF9BA801ED825EB002FCEE2 /* String+Extention.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				BC3DEBB31EC2B3D50047F62C /* PhotoPickerController.swift in Sources */,
 				BC3DEBC01EC2EA3C0047F62C /* Common.swift in Sources */,
 				BCD038681ECC15F500C2A115 /* VideoElementInfoView.swift in Sources */,
+				BCF9BA811ED825EB002FCEE2 /* String+Extention.swift in Sources */,
 				BCF0396A1ED2B34800C48A94 /* HWShowImageView.swift in Sources */,
 				BC4845CE1EC9549800D0A1A6 /* MultiPickerCell.swift in Sources */,
 				BC277C0C1EC3193F007023E1 /* MomentCollection.swift in Sources */,
