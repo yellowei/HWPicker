@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PhotoPickerControllerDelegate {
 

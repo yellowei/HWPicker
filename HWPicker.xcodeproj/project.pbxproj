@@ -15,8 +15,6 @@
 		BC3DEBA11EC2B0510047F62C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC3DEB9F1EC2B0510047F62C /* Main.storyboard */; };
 		BC3DEBA31EC2B0510047F62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC3DEBA21EC2B0510047F62C /* Assets.xcassets */; };
 		BC3DEBA61EC2B0510047F62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC3DEBA41EC2B0510047F62C /* LaunchScreen.storyboard */; };
-		BC3DEBAF1EC2B1E80047F62C /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3DEBAD1EC2B1E80047F62C /* MBProgressHUD.framework */; };
-		BC3DEBB01EC2B1E80047F62C /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3DEBAE1EC2B1E80047F62C /* SDWebImage.framework */; };
 		BC3DEBB31EC2B3D50047F62C /* PhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB21EC2B3D50047F62C /* PhotoPickerController.swift */; };
 		BC3DEBB51EC2B8990047F62C /* MultiPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB41EC2B8990047F62C /* MultiPickerController.swift */; };
 		BC3DEBB81EC2B95E0047F62C /* AlbumObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DEBB71EC2B95E0047F62C /* AlbumObj.swift */; };
@@ -28,6 +26,7 @@
 		BCA6F1E21EC5E58C00F649D7 /* PhotoPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA6F1E11EC5E58C00F649D7 /* PhotoPickerCell.swift */; };
 		BCD038641ECC0E7A00C2A115 /* PickerElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD038631ECC0E7900C2A115 /* PickerElementView.swift */; };
 		BCD038681ECC15F500C2A115 /* VideoElementInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD038671ECC15F500C2A115 /* VideoElementInfoView.swift */; };
+		BCD487E71EDC2FD200CDB549 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD487E31EDC2F9400CDB549 /* MBProgressHUD.framework */; };
 		BCF039631ED290C200C48A94 /* btn_navi_return_title.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF0395F1ED290C200C48A94 /* btn_navi_return_title.png */; };
 		BCF039641ED290C200C48A94 /* btn_navi_return_title_white.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF039601ED290C200C48A94 /* btn_navi_return_title_white.png */; };
 		BCF039651ED290C200C48A94 /* photopicker_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF039611ED290C200C48A94 /* photopicker_nor.png */; };
@@ -63,6 +62,8 @@
 		BCA6F1E11EC5E58C00F649D7 /* PhotoPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerCell.swift; sourceTree = "<group>"; };
 		BCD038631ECC0E7900C2A115 /* PickerElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerElementView.swift; sourceTree = "<group>"; };
 		BCD038671ECC15F500C2A115 /* VideoElementInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoElementInfoView.swift; sourceTree = "<group>"; };
+		BCD487E31EDC2F9400CDB549 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "../../../Library/Developer/Xcode/DerivedData/HWPicker-fwjspxptfwqfjyezijpkdktvxafl/Build/Products/Debug-iphonesimulator/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		BCD487E51EDC2F9800CDB549 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/HWPicker-fwjspxptfwqfjyezijpkdktvxafl/Build/Products/Debug-iphonesimulator/SDWebImage/SDWebImage.framework"; sourceTree = "<group>"; };
 		BCF0395F1ED290C200C48A94 /* btn_navi_return_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_navi_return_title.png; sourceTree = "<group>"; };
 		BCF039601ED290C200C48A94 /* btn_navi_return_title_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_navi_return_title_white.png; sourceTree = "<group>"; };
 		BCF039611ED290C200C48A94 /* photopicker_nor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photopicker_nor.png; sourceTree = "<group>"; };
@@ -77,8 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC3DEBAF1EC2B1E80047F62C /* MBProgressHUD.framework in Frameworks */,
-				BC3DEBB01EC2B1E80047F62C /* SDWebImage.framework in Frameworks */,
+				BCD487E71EDC2FD200CDB549 /* MBProgressHUD.framework in Frameworks */,
 				177374650A722E9155F655A8 /* Pods_HWPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +89,8 @@
 		3213627CA96EFE80D83C58DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCD487E51EDC2F9800CDB549 /* SDWebImage.framework */,
+				BCD487E31EDC2F9400CDB549 /* MBProgressHUD.framework */,
 				BC3DEBAD1EC2B1E80047F62C /* MBProgressHUD.framework */,
 				BC3DEBAE1EC2B1E80047F62C /* SDWebImage.framework */,
 				1E6C5618D3E8B82943B2D41C /* Pods_HWPicker.framework */,
@@ -330,7 +332,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
