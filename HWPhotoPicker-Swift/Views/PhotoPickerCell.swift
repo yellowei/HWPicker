@@ -62,7 +62,9 @@ class PhotoPickerCell: UITableViewCell {
         
         var size: CGSize = CGSize(width: 0, height: 0)
         
-        if IS_IOS7, let nsText = text as? NSString {
+        let nsText = text as NSString
+        
+        if IS_IOS7, nsText.length > 0 {
             
             let tdic = ["\(NSFontAttributeName)": font]
             let options = NSStringDrawingOptions.init(rawValue: (NSStringDrawingOptions.truncatesLastVisibleLine.rawValue | NSStringDrawingOptions.usesLineFragmentOrigin.rawValue))
